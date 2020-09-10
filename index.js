@@ -7,11 +7,21 @@ const breakfastBurrito = {name: "Breakfast Burrito", price: 16, category:"Breakf
 /* Task 1a: write a function to return more menu items with the same format as the items above. */
 
 function createMenuItem(name, cost, category){
-    /* Code here */
+    return newItem = {
+      name: name,
+      price: cost,
+      category: category
+    }
 }
+console.log(createMenuItem("Fries", 2, "Sides"));
+// Should return an object with those key:values
 
 /* Task 1b: use your function to create 3 more menu items. You may add any items to the menu that you'd like */
 
+const fries = createMenuItem("French Fries", 3, "Lunch");
+console.log(fries); // Shows that an object called "fries" contains those key:values
+const soda = createMenuItem("Fountain Soda", 2, "Drinks");
+const omelette = createMenuItem("Farm Omelette", 16, "Breakfast");
 
 
 /* Task 2: You're having a lunch special! 25% off for teachers and students, 10% off for everyone else. Add a method to your burger object that automatically calculates price given a string as a parameter. 
