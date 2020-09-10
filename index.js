@@ -35,6 +35,25 @@ and should return a number.
 For example, burger.discount("teacher") would return 13.5 and burger.discount("public") would return 16.2*/
 
 
+burger.discount = function(status) {
+  if (status === "public") {
+    return burger.price*0.9;
+  } 
+  else if (status === "student") {
+    return burger.price*.75;
+  } // I tried to do (status === "student" || "teacher") and it didn't work? It evaluated any input as "true".
+  else if (status === "teacher") { 
+    return burger.price*.75;
+  }
+  else {
+    return burger.price;
+  }
+}
+
+
+console.log(burger.discount("teacher")); // Should return 13.5
+console.log(burger.discount("public")); // Should return 16.2
+console.log(burger.discount("dog")); // Should return 18
 
 ///////////////Reviews (MVP)///////////////////
 
@@ -50,11 +69,19 @@ const reviews = [{name: "Daniela", rating: 5, feedback:"Beautiful atmosphere and
 
 /* Task 3: Console.log just Julius' feedback */
 
+console.log(reviews[5].feedback);
 
 /* Task 4: Add a new rating with your (fictitious) opinions of the restaurant in the same format as the reviews above. */
 
+reviews.push({name: "Victoria", rating: 5, feedback: "Great food and service!"});
+
+
+console.log(reviews[reviews.length-1]); // Should return the new user and rating info
 
 /* Task 5: Add the following feedback to Reyna's rating - "this place is chill with really cool people, great for getting work done on weekdays"
+
+
+
 
 /*  Task 6: Write a function to return a review based on the index of the review in the array.
 
