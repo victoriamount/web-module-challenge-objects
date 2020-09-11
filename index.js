@@ -78,8 +78,10 @@ reviews.push({name: "Victoria", rating: 5, feedback: "Great food and service!"})
 
 console.log(reviews[reviews.length-1]); // Should return the new user and rating info
 
-/* Task 5: Add the following feedback to Reyna's rating - "this place is chill with really cool people, great for getting work done on weekdays"
+/* Task 5: Add the following feedback to Reyna's rating - "this place is chill with really cool people, great for getting work done on weekdays"*/
 
+reviews[7].feedback = "this place is chill with really cool people, great for getting work done on weekdays";
+console.log(reviews[7]); // Should display object with name:"Reyna" with the new review 
 
 
 
@@ -95,10 +97,12 @@ and should return a string in the format `{name} gave the restaurant a {rating},
  * For example, if getReviewByIndex is invoked with reviews and the number 0
  * it will return `Daniela gave the restaurant a 5 star review and their feedback was: Beautiful atmosphere and wonderful vegan options!`
 */
+
+
 function getReviewByIndex(reviews, index) {
-    /* code here */
+    return `${reviews[index].name} gave the restaurant a ${reviews[index].rating}, and their feedback was: ${reviews[index].feedback}`;
   }
-  
+  console.log(getReviewByIndex(reviews, 0));
 
 /* Task 7: Write a function to get information about the most recent review called `getLastReview`
 
@@ -109,9 +113,10 @@ and should return a string in the format `name} gave the restaurant a {rating}, 
 
 For example, if getLastReview is invoked passing the reviews array it will return `Reyna gave the restaurant a 3.5 star review and their feedback was: "this place is chill with really cool people, great for getting work done on weekdays"`.
 */
-function getLastReview(/* code here */) {
-    /* code here */
+function getLastReview(myArray) {
+    return `${myArray[myArray.length-1].name} gave the restaurant a ${myArray[myArray.length-1].rating}, and their feedback was: ${myArray[myArray.length-1].feedback}`;
   } 
+  console.log(getLastReview(reviews)) // Should return the new review from me
 
 
 ///////////////🍔☕️🍽 STRETCH🍔☕️🍽////////////////////
@@ -128,10 +133,16 @@ function getLastReview(/* code here */) {
     {name:"Lauren", rating: 4, feedback: "Absolutely love that they have karaoke Fridays! Food and drink selection is okay."}]
 */
 
- function getReviewByRating(/* code here */) {
-    /* code here */
+ function getReviewByRating(myArray, myRating) {
+    const sameRatingArray = [];
+    for (let i = 0; i < myArray.length; i++) {
+      if (Math.floor(myArray[i].rating) == myRating) {
+        sameRatingArray.push(myArray[i]);
+      }
+    }
+    return sameRatingArray;
   }
-
+console.log(getReviewByRating(reviews, 4));
   
 /** STRETCH 2: Write a function called 'getLongestReview' that returns an array containing all reviews longer than 15 words. 
   
@@ -146,12 +157,24 @@ and should return an array of objects.
     {name: "Brett", rating: 3, feedback: "great selection of snacks and a nice cafe area to get work done during the day."},
     {name: "Julius", rating: 2, feedback: "I was largely unimpressed by this venue. Nothing special on the menu and too expensive. The atmosphere is polarizing, and not for me, but I think some would like it." }]
 */
-  function getLongReviews(/* code here */) {
-    /* code here */
+  function getLongReviews(myArray) {
+    const reviewHolderArray = [];
+    for (let i = 0; i < myArray.length; i++) {
+      if (myArray[i].feedback.split(" ").length > 15) {
+        reviewHolderArray.push(myArray[i]);
+      }
+      // console.log(myArray[i].feedback.split(" "));
+    }
+    return reviewHolderArray;
   }
-  
+console.log(getLongReviews(reviews));
 
-/* STRETCH 3:  This challenge is not related to the data above! 
+
+
+
+
+/* STRETCH 3:  This challenge is not related to the data above!
+
 
 Write a function called carMarker 
 
@@ -169,7 +192,15 @@ The returned object should have the following characteristics:
 */
 
 
-function carMaker(/* code here */) {
-    /* code here */
-    
+function carMaker(odometerReading) {
+  const car = {
+    odometer: odometerReading,
+    drive: function (distance) {
+      this.odometer = this.odometer + distance;
+      return this.odometer;
+    }
+  }
+  return car;
 }
+console.log(carMaker(2).drive(4));
+console.log(carMaker(2).drive(5)); // This is weird ?
